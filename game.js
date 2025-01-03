@@ -4,6 +4,7 @@ let brojac = 0;
 let slike = ["1.jpg","2.jpg","3.jpg","4.jpg","5.jpg","6.jpg","7.jpg"]
 let krajIgrice;
 let prikazivanjeSlika;
+let brojZivota = 3;
 
 
 
@@ -51,6 +52,10 @@ function prikaziDugmeZaZvuk(){
 function sakrijDugmeZaZvuk(){
     let dugme = document.getElementById("dugmeZaZvuk");
     dugme.style.display="none";
+}
+function prikaziZivote(){
+    let zivoti = document.getElementById("zivoti");
+    zivoti.style.display="flex";
 }
 ///////////////////////////////////////////////////////////
 ////////////////////////////////////////////////////////
@@ -167,10 +172,12 @@ function provjeraKlika(div){
         case 'url("img/3.jpg")':
             bodovi.push(-30);
             zvukFaila();
+            brojZivota--;
             break;
         case 'url("img/4.jpg")':
             bodovi = [0];
             zvukFaila();
+            brojZivota --;
             break;
         case 'url("img/5.jpg")':
             povecajVrijeme(5);
@@ -190,6 +197,7 @@ function provjeraKlika(div){
     console.log(bodovi)
     div.style.backgroundImage = ""
     upisiUdinamicneBodove();
+    zivoti();
 
 }
 ///////////////////////////////////////////////// -----------------------------
@@ -258,6 +266,24 @@ function bonusSekunde(){
     let zvuk = document.getElementById("bonusSekunde");
     zvuk.play();
 }
+///////////////////////////////////////////
+//ZIVOTI
+/////////////////////////////////////////////
+function zivoti(){
+    if(brojZivota == 2){
+        document.getElementById("zivot3").style.visibility = "hidden";
+
+    }
+    if(brojZivota == 1){
+        document.getElementById("zivot2").style.visibility = "hidden";
+
+    }
+    if(brojZivota==0){
+        document.getElementById("zivoti").style.display = "none";
+        krajIgre();
+    }
+    
+}
 
 //-----------------------
 // GLAVNA FUNKCIJA
@@ -265,7 +291,9 @@ function bonusSekunde(){
 function startGame(){
     ukloniDugme();
     prikaziPodatke();
+    prikaziZivote()
     zvukIgrice();
+    
     // krajIgrice se poziva svake sekunde te se tako smanjuje vrijeme
     krajIgrice = setInterval(smanjivanjeVremena,1000);
     prikazSlikeRandomSekundi();

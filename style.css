@@ -12,8 +12,12 @@
 }
 
 body{
-    background-color: #2C3E50;
+   
     cursor: url("img/cursor.png"),pointer;
+    background-image: url("img/pozadina.svg");
+    
+
+
 }
 .container{
     display: flex;
@@ -29,7 +33,7 @@ body{
     display: flex;
     flex-direction: column;
     gap: 50px;
-    background-color: #2C3E50;
+    
     width: 22%;
     height: 40%;
 
@@ -226,7 +230,7 @@ body{
     padding: 10px 20px;
     margin: 8px;
     font-size: 16px;
-    cursor: pointer;
+
     border: none;
     background-color: #E67E22;
     color: white;
